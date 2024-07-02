@@ -16,12 +16,10 @@ export default function CameraFeed({ videoRef, onPlay }) {
   return (
     <video
       ref={videoRef}
-      className="rounded-lg shadow-lg"
+      className="w-full h-full object-cover rounded-3xl shadow-2xl"
       autoPlay
       playsInline
       muted
-      width="640"
-      height="480"
       onLoadedData={onPlay}
     />
   );

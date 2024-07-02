@@ -3,14 +3,20 @@ import * as tf from '@tensorflow/tfjs';
 import * as poseDetection from '@tensorflow-models/pose-detection';
 import AttentivenessScore from '../components/AttentivenessScore';
 import CameraFeed from '../components/CameraFeed';
+import GameUI from '../components/GameUI';
 
 export default function Home() {
   const [isAttentive, setIsAttentive] = useState(null);
   const [score, setScore] = useState(0);
+  const [streak, setStreak] = useState(0);
+  const [level, setLevel] = useState(1);
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const [model, setModel] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [prevNoseX, setPrevNoseX] = useState(0);
+const [prevNoseY, setPrevNoseY] = useState(0);
 
   useEffect(() => {
     async function initializeTensorFlowAndModel() {
@@ -51,7 +57,7 @@ export default function Home() {
         
         const attentive = isStudentAttentive(pose);
         setIsAttentive(attentive);
-        setScore(prevScore => attentive ? prevScore + 1 : Math.max(0, prevScore - 1));
+        updateScore(attentive);
       }
     }
     requestAnimationFrame(predictAttentiveness);
@@ -63,10 +69,34 @@ export default function Home() {
     const rightEye = pose.keypoints.find(kp => kp.name === 'right_eye');
     
     if (nose && leftEye && rightEye) {
-      const eyeMidpointY = (leftEye.y + rightEye.y) / 2;
-      return nose.score > 0.9 && nose.y < eyeMidpointY && nose.y > videoRef.current.height * 0.2;
+      // Check if face is visible
+      const faceVisible = (nose.score > 0.5 && leftEye.score > 0.3 && rightEye.score > 0.3);
+      
+      // Check if face is oriented towards the camera (more lenient)
+      const faceForward = Math.abs(leftEye.x - rightEye.x) > videoRef.current.width * 0.03;
+      
+      // Check if head is in a reasonable position (more lenient)
+      const goodHeadPosition = (nose.y > videoRef.current.height * 0.1 && 
+                                nose.y < videoRef.current.height * 0.9);
+      
+      return faceVisible && (faceForward || goodHeadPosition);
     }
     return false;
+  }
+
+  function updateScore(attentive) {
+    if (attentive) {
+      setScore(prevScore => Math.min(prevScore + 2, 100)); // Cap at 100
+      setStreak(prevStreak => prevStreak + 1);
+    } else {
+      setScore(prevScore => Math.max(prevScore - 1, -50)); // Less punishing, minimum -50
+      setStreak(0);
+    }
+    
+    if (streak > 0 && streak % 10 === 0) {
+      setLevel(prevLevel => prevLevel + 1);
+      triggerConfetti();
+    }
   }
 
   function drawKeypoints(ctx, keypoints) {
@@ -107,19 +137,21 @@ export default function Home() {
   }
 
   if (isLoading) {
-    return <div className="flex items-center justify-center min-h-screen">
-      <p className="text-2xl font-bold">Loading...</p>
+    return <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 to-pink-500">
+      <p className="text-2xl font-bold text-white">Loading Attention Booster...</p>
     </div>;
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-100">
-      <h1 className="text-4xl font-bold mb-8">Attentiveness Tracker</h1>
-      <div className="relative">
-        <CameraFeed videoRef={videoRef} onPlay={predictAttentiveness} />
-        <canvas ref={canvasRef} className="absolute top-0 left-0" />
+    <div className="relative w-screen h-screen overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
+      <h1 className="absolute top-6 left-0 right-0 text-5xl font-bold text-center text-white">Attention Booster</h1>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4/5 h-3/4">
+        <div className="relative w-full h-full">
+          <CameraFeed videoRef={videoRef} onPlay={predictAttentiveness} />
+          <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full" />
+        </div>
       </div>
-      <AttentivenessScore isAttentive={isAttentive} score={score} />
+      <GameUI isAttentive={isAttentive} score={score} streak={streak} level={level} />
     </div>
   );
 }
