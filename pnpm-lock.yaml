@@ -11,6 +11,9 @@ importers:
       '@tensorflow-models/blazeface':
         specifier: ^0.1.0
         version: 0.1.0(@tensorflow/tfjs-core@4.20.0)
+      '@tensorflow-models/pose-detection':
+        specifier: ^2.1.3
+        version: 2.1.3(@mediapipe/pose@0.5.1675469404)(@tensorflow/tfjs-backend-wasm@4.20.0(@tensorflow/tfjs-core@4.20.0))(@tensorflow/tfjs-backend-webgl@4.20.0(@tensorflow/tfjs-core@4.20.0))(@tensorflow/tfjs-backend-webgpu@4.20.0(@tensorflow/tfjs-core@4.20.0))(@tensorflow/tfjs-core@4.20.0)
       '@tensorflow-models/posenet':
         specifier: ^2.2.2
         version: 2.2.2(@tensorflow/tfjs-core@4.20.0)
@@ -64,6 +67,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.25':
     resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
+
+  '@mediapipe/pose@0.5.1675469404':
+    resolution: {integrity: sha512-DFZsNWTsSphRIZppnUCuunzBiHP2FdJXR9ehc7mMi4KG+oPaOH0Em3d6kr7Py+TSyTXC1doH88KcF28k2sBxsQ==}
 
   '@next/env@14.2.4':
     resolution: {integrity: sha512-3EtkY5VDkuV2+lNmKlbkibIJxcO4oIHEhBWne6PaAp+76J9KoSsGvNikp6ivzAT8dhhBMYrm6op2pS1ApG0Hzg==}
@@ -150,6 +156,16 @@ packages:
       '@tensorflow/tfjs-converter': ^4.10.0
       '@tensorflow/tfjs-core': ^4.10.0
 
+  '@tensorflow-models/pose-detection@2.1.3':
+    resolution: {integrity: sha512-SEq4K8fmkVVh9U2VemS2kKuT6DDZf3mO+fcid6F2/DSYMtVrGU13kWo0Q+GAwLznIPaNhlOxVVUgWiDXKUPlzA==}
+    peerDependencies:
+      '@mediapipe/pose': ~0.5.0
+      '@tensorflow/tfjs-backend-wasm': ^4.10.0
+      '@tensorflow/tfjs-backend-webgl': ^4.10.0
+      '@tensorflow/tfjs-backend-webgpu': ^4.10.0
+      '@tensorflow/tfjs-converter': ^4.10.0
+      '@tensorflow/tfjs-core': ^4.10.0
+
   '@tensorflow-models/posenet@2.2.2':
     resolution: {integrity: sha512-0SXIksRet/IdX7WVH+JSD6W3upkGHix1hwtd3xykIoIMGR7zQ4SC5+wZcNt9ofASyxNYQoI+tUULUo4LNw0c3w==}
     peerDependencies:
@@ -162,9 +178,19 @@ packages:
     peerDependencies:
       '@tensorflow/tfjs-core': 4.20.0
 
+  '@tensorflow/tfjs-backend-wasm@4.20.0':
+    resolution: {integrity: sha512-btfvT8SFQv4KNXS4TPWIvzHSgvBUoitfS9I5u0puK2kZaXBA9TiAnCF/2HlCIqJHif5i1qu+9i8dqiNgFwewGg==}
+    peerDependencies:
+      '@tensorflow/tfjs-core': 4.20.0
+
   '@tensorflow/tfjs-backend-webgl@4.20.0':
     resolution: {integrity: sha512-M03fJonJGxm2u3SCzRNA2JLh0gxaAye64SEmGAXOehizowxy42l+lMsPWU8xU7r7mN6PEilBNkuKAf5YJ7Xumg==}
     engines: {yarn: '>= 1.3.2'}
+    peerDependencies:
+      '@tensorflow/tfjs-core': 4.20.0
+
+  '@tensorflow/tfjs-backend-webgpu@4.20.0':
+    resolution: {integrity: sha512-d+mooh89bl+j29T282nE+lMs2ZKQdTC+0TezdjF4DvOd/YadShUtdrvEg+uWlA3631l1egEhSy/ah8n9mcVgAg==}
     peerDependencies:
       '@tensorflow/tfjs-core': 4.20.0
 
@@ -191,6 +217,9 @@ packages:
   '@tensorflow/tfjs@4.20.0':
     resolution: {integrity: sha512-+ZLfJq2jyIOE2/+yKPoyD/gfy3RZypbfMrlzvBDgodTK5jnexprihhX38hxilh9HPWvWQXJqiUjKJP5ECCikrw==}
     hasBin: true
+
+  '@types/emscripten@0.0.34':
+    resolution: {integrity: sha512-QSb9ojDincskc+uKMI0KXp8e1NALFINCrMlp8VGKGcTSxeEyRTTKyjWw75NYrCZHUsVEEEpr1tYHpbtaC++/sQ==}
 
   '@types/long@4.0.2':
     resolution: {integrity: sha512-MqTGEo5bj5t157U6fA/BiDynNkn0YknVdh48CMPkTSpFTVmvao5UQmm7uEF6xBEo7qIMAlY/JSleYaE6VOdpaA==}
@@ -259,6 +288,9 @@ packages:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
 
+  brace-expansion@1.1.11:
+    resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
+
   brace-expansion@2.0.1:
     resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
 
@@ -310,6 +342,9 @@ packages:
   commander@4.1.1:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
+
+  concat-map@0.0.1:
+    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
 
   core-js@3.29.1:
     resolution: {integrity: sha512-+jwgnhg6cQxKYIIjGtAHq2nwUOolo9eoFZ4sHfUH09BLXBgxnH4gA0zEd+t+BO2cNB8idaBtZFcFTRjQJRJmAw==}
@@ -371,6 +406,9 @@ packages:
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
 
+  fs.realpath@1.0.0:
+    resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
+
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -396,6 +434,10 @@ packages:
     engines: {node: '>=16 || 14 >=14.18'}
     hasBin: true
 
+  glob@7.2.3:
+    resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
+
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
@@ -406,6 +448,13 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
+
+  inflight@1.0.6:
+    resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+
+  inherits@2.0.4:
+    resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
   is-binary-path@2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
@@ -483,6 +532,9 @@ packages:
     resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
     engines: {node: '>= 0.6'}
 
+  minimatch@3.1.2:
+    resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
+
   minimatch@9.0.5:
     resolution: {integrity: sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -545,8 +597,15 @@ packages:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
     engines: {node: '>= 6'}
 
+  once@1.4.0:
+    resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
+
   package-json-from-dist@1.0.0:
     resolution: {integrity: sha512-dATvCeZN/8wQsGywez1mzHtTlP22H8OEfPrVMLNr4/eGa+ijtLn/6M5f0dY8UKNrC2O9UCU6SSoG3qRKnt7STw==}
+
+  path-is-absolute@1.0.1:
+    resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
+    engines: {node: '>=0.10.0'}
 
   path-key@3.1.1:
     resolution: {integrity: sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==}
@@ -653,6 +712,11 @@ packages:
     resolution: {integrity: sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
+  rimraf@3.0.2:
+    resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
+    hasBin: true
+
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
 
@@ -755,6 +819,9 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
+  tslib@2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
@@ -788,6 +855,9 @@ packages:
   wrap-ansi@8.1.0:
     resolution: {integrity: sha512-si7QWI6zUMq56bESFvagtmzMdGOtoxfR+Sez11Mobfc7tm+VkUckk9bW2UeffTGVUbOksxmSw0AA2gs8g71NCQ==}
     engines: {node: '>=12'}
+
+  wrappy@1.0.2:
+    resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
   y18n@5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
@@ -835,6 +905,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
+
+  '@mediapipe/pose@0.5.1675469404': {}
 
   '@next/env@14.2.4': {}
 
@@ -891,6 +963,16 @@ snapshots:
     dependencies:
       '@tensorflow/tfjs-core': 4.20.0
 
+  '@tensorflow-models/pose-detection@2.1.3(@mediapipe/pose@0.5.1675469404)(@tensorflow/tfjs-backend-wasm@4.20.0(@tensorflow/tfjs-core@4.20.0))(@tensorflow/tfjs-backend-webgl@4.20.0(@tensorflow/tfjs-core@4.20.0))(@tensorflow/tfjs-backend-webgpu@4.20.0(@tensorflow/tfjs-core@4.20.0))(@tensorflow/tfjs-core@4.20.0)':
+    dependencies:
+      '@mediapipe/pose': 0.5.1675469404
+      '@tensorflow/tfjs-backend-wasm': 4.20.0(@tensorflow/tfjs-core@4.20.0)
+      '@tensorflow/tfjs-backend-webgl': 4.20.0(@tensorflow/tfjs-core@4.20.0)
+      '@tensorflow/tfjs-backend-webgpu': 4.20.0(@tensorflow/tfjs-core@4.20.0)
+      '@tensorflow/tfjs-core': 4.20.0
+      rimraf: 3.0.2
+      tslib: 2.4.0
+
   '@tensorflow-models/posenet@2.2.2(@tensorflow/tfjs-core@4.20.0)':
     dependencies:
       '@tensorflow/tfjs-core': 4.20.0
@@ -901,6 +983,12 @@ snapshots:
       '@types/seedrandom': 2.4.34
       seedrandom: 3.0.5
 
+  '@tensorflow/tfjs-backend-wasm@4.20.0(@tensorflow/tfjs-core@4.20.0)':
+    dependencies:
+      '@tensorflow/tfjs-backend-cpu': 4.20.0(@tensorflow/tfjs-core@4.20.0)
+      '@tensorflow/tfjs-core': 4.20.0
+      '@types/emscripten': 0.0.34
+
   '@tensorflow/tfjs-backend-webgl@4.20.0(@tensorflow/tfjs-core@4.20.0)':
     dependencies:
       '@tensorflow/tfjs-backend-cpu': 4.20.0(@tensorflow/tfjs-core@4.20.0)
@@ -908,6 +996,11 @@ snapshots:
       '@types/offscreencanvas': 2019.3.0
       '@types/seedrandom': 2.4.34
       seedrandom: 3.0.5
+
+  '@tensorflow/tfjs-backend-webgpu@4.20.0(@tensorflow/tfjs-core@4.20.0)':
+    dependencies:
+      '@tensorflow/tfjs-backend-cpu': 4.20.0(@tensorflow/tfjs-core@4.20.0)
+      '@tensorflow/tfjs-core': 4.20.0
 
   '@tensorflow/tfjs-converter@4.20.0(@tensorflow/tfjs-core@4.20.0)':
     dependencies:
@@ -955,6 +1048,8 @@ snapshots:
     transitivePeerDependencies:
       - encoding
       - seedrandom
+
+  '@types/emscripten@0.0.34': {}
 
   '@types/long@4.0.2': {}
 
@@ -1013,6 +1108,11 @@ snapshots:
   balanced-match@1.0.2: {}
 
   binary-extensions@2.3.0: {}
+
+  brace-expansion@1.1.11:
+    dependencies:
+      balanced-match: 1.0.2
+      concat-map: 0.0.1
 
   brace-expansion@2.0.1:
     dependencies:
@@ -1074,6 +1174,8 @@ snapshots:
 
   commander@4.1.1: {}
 
+  concat-map@0.0.1: {}
+
   core-js@3.29.1: {}
 
   cross-spawn@7.0.3:
@@ -1129,6 +1231,8 @@ snapshots:
 
   fraction.js@4.3.7: {}
 
+  fs.realpath@1.0.0: {}
+
   fsevents@2.3.3:
     optional: true
 
@@ -1153,6 +1257,15 @@ snapshots:
       package-json-from-dist: 1.0.0
       path-scurry: 1.11.1
 
+  glob@7.2.3:
+    dependencies:
+      fs.realpath: 1.0.0
+      inflight: 1.0.6
+      inherits: 2.0.4
+      minimatch: 3.1.2
+      once: 1.4.0
+      path-is-absolute: 1.0.1
+
   graceful-fs@4.2.11: {}
 
   has-flag@4.0.0: {}
@@ -1160,6 +1273,13 @@ snapshots:
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
+
+  inflight@1.0.6:
+    dependencies:
+      once: 1.4.0
+      wrappy: 1.0.2
+
+  inherits@2.0.4: {}
 
   is-binary-path@2.1.0:
     dependencies:
@@ -1218,6 +1338,10 @@ snapshots:
     dependencies:
       mime-db: 1.52.0
 
+  minimatch@3.1.2:
+    dependencies:
+      brace-expansion: 1.1.11
+
   minimatch@9.0.5:
     dependencies:
       brace-expansion: 2.0.1
@@ -1271,7 +1395,13 @@ snapshots:
 
   object-hash@3.0.0: {}
 
+  once@1.4.0:
+    dependencies:
+      wrappy: 1.0.2
+
   package-json-from-dist@1.0.0: {}
+
+  path-is-absolute@1.0.1: {}
 
   path-key@3.1.1: {}
 
@@ -1364,6 +1494,10 @@ snapshots:
       supports-preserve-symlinks-flag: 1.0.0
 
   reusify@1.0.4: {}
+
+  rimraf@3.0.2:
+    dependencies:
+      glob: 7.2.3
 
   run-parallel@1.2.0:
     dependencies:
@@ -1479,6 +1613,8 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
+  tslib@2.4.0: {}
+
   tslib@2.6.3: {}
 
   undici-types@5.26.5: {}
@@ -1513,6 +1649,8 @@ snapshots:
       ansi-styles: 6.2.1
       string-width: 5.1.2
       strip-ansi: 7.1.0
+
+  wrappy@1.0.2: {}
 
   y18n@5.0.8: {}
 
